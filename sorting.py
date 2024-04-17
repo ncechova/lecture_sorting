@@ -20,10 +20,24 @@ def read_data(file_name):
                 data[key].append(int(value))
     return data
 
+def selection_sort(list_of_nums):
+    for x in range(len(list_of_nums)):
+        smallest_num = list_of_nums[x]
+        smallest_pos = x
+        for position in range(x, len(list_of_nums)):
+            number = list_of_nums[position]
+            if number < smallest_num:
+                smallest_num = number
+                smallest_pos = position
+        list_of_nums[smallest_pos], list_of_nums[x] = list_of_nums[x], list_of_nums[smallest_pos]
+    return list_of_nums
+
 def main():
     name = "numbers.csv"
     data = read_data(name)
-    return data
+    nums = [88, 36, 21, 54, 99, 1, 81, 18, 21, 36, 61]
+    sorted = selection_sort(nums)
+    return sorted
 
 
 if __name__ == '__main__':
