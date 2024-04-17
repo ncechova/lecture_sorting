@@ -42,12 +42,33 @@ def selection_sort(list_of_nums, direction="sestupne"):
             list_of_nums[highest_pos], list_of_nums[x] = list_of_nums[x], list_of_nums[highest_pos]
     return list_of_nums
 
+def bubble_sort(list_of_nums):
+    idx = 0
+    while idx < (len(list_of_nums)-1):
+        for x in range(idx, len(list_of_nums)):
+            if list_of_nums[idx] > list_of_nums[x]:
+                list_of_nums[idx], list_of_nums[x] = list_of_nums[x], list_of_nums[idx]
+        idx += 1
+    return list_of_nums
+
+def insertion_sort(list_of_nums):
+    for i in range(1, len(list_of_nums)):
+        number = list_of_nums[i]
+        sorted_numbers = list_of_nums[:i]
+        for sorted_num in sorted_numbers:
+            x = sorted_numbers.index(sorted_num)
+            num_idx = list_of_nums.index(number)
+            if number < sorted_num and num_idx > x:
+                list_of_nums.pop(i)
+                list_of_nums.insert(x, number)
+    return list_of_nums
+
 def main():
     name = "numbers.csv"
     data = read_data(name)
-    nums = [88, 36, 21, 54, 99, 1, 81, 18, 21, 36, 61]
-    sorted = selection_sort(nums)
-    return sorted
+    nums = [88, 36, 21, 54, 99, 1, 81, 18, 61]
+    sorted_nums = insertion_sort(nums)
+    return sorted_nums
 
 
 if __name__ == '__main__':
